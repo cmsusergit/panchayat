@@ -1,0 +1,58 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "panchayat"
+  },
+  "AccessToken": {
+    "dataSource": "panchayat",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "panchayat",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "panchayat",
+    "public": false,
+    "options": {
+      "strictObjectIDCoercion": true
+    }
+  },
+  "Role": {
+    "dataSource": "panchayat",
+    "public": false
+  },
+  "GrampanchayatInfo": {
+    "dataSource": "panchayat",
+    "public": true
+  },
+  "AkarniMaster": {
+    "dataSource": "panchayat",
+    "public": true
+  },
+  "AkarniTrans": {
+    "dataSource": "panchayat",
+    "public": true
+  },
+  "TaxDetail": {
+    "dataSource": "panchayat",
+    "public": true
+  },
+  "Akarniyear": {
+    "dataSource": "panchayat",
+    "public": true
+  }
+}

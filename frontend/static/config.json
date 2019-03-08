@@ -1,0 +1,7 @@
+{
+
+
+  "db_configuration":{
+    "baseURL":"http://localhost:4040/panchapi"
+  }
+}

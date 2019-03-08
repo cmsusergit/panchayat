@@ -1,0 +1,15 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "panchayatdb": {
+    "host": "localhost",
+    "port": 4040,
+    "database": "panch",
+    "password": "root",
+    "name": "panchayatdb",
+    "user": "root",
+    "connector": "mysql"
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "loginUrl":"http://localhost:4040/dbapi/Users/login",
+  "logoutUrl":"http://localhost:4040/dbapi/Users/logout"
+}
