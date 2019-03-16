@@ -88,7 +88,18 @@ export default {
       reportmesg:'આકારણી પત્રક - રિપોર્ટ',
       reportPanelOpen:false,
       msg: 'પધારો ગ્રામ પંચાયત સોફ્ટવેર',
-      studentDt:[],
+      studentDt:[
+
+
+
+
+
+
+
+
+        {id:"1",name:"test1",dept:"CE",bdate:new Date(),addr:"tt",phone:"1010"},
+        {id:"2",name:"test1_1",dept:"CE",bdate:new Date(),addr:"tt",phone:"1010"}
+      ],
     }
   },
   mounted(){
@@ -110,10 +121,10 @@ export default {
         this.$router.push({path:'/addupdatestudent/'+id});
       },
       fetchDt:function(){
-        axios.get('http://localhost:4040/dbapi/Students').then((result)=>{
-             console.log("****"+JSON.stringify(result.data));
-             this.studentDt=result.data;
-         }).catch((error)=>{console.log(error);});
+        // axios.get('http://localhost:4040/dbapi/Students').then((result)=>{
+        //      console.log("****"+JSON.stringify(result.data));
+        //      this.studentDt=result.data;
+        //  }).catch((error)=>{console.log(error);});
       },
       reportGenerator:function(){
         console.log('****');

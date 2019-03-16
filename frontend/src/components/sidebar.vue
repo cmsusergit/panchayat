@@ -6,7 +6,9 @@
 
       <li><router-link :to="{ name: 'Taxation'}">વેરા નાખો</router-link></li>
       <li><router-link :to="{ name: 'TaxCollection'}">વેરાની વસુલાત</router-link></li>
-      <li><router-link to='/assesment'>મિલ્કતની વિગત</router-link></li>
+
+      <li><router-link :to="{ name: 'ManageAyear'}">મેનેજ આકારણી વર્ષ</router-link></li>
+      <li><router-link :to="{name:'Property'}">મિલ્કતની વિગત</router-link></li>
       <li><a>આકારણી રજીસ્ટર</a></li>
       <li><a>રિપોર્ટ્સ/અહેવાલ</a></li>
       <li>

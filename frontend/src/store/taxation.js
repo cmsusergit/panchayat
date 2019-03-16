@@ -9,10 +9,7 @@ const TaxationStore={
   state: {
     error:null,
     mesg:null,
-    taxList:[
-        {taxid:1,taxname:'પાણી વેરો',taxvalue:100.0,taxvaluetype:0},
-        {taxid:2,taxname:'ઘર વેરો',taxvalue:50.50,taxvaluetype:0}
-      ]
+    taxList:[]
   },
   getters:{
     mesg(state){return state.mesg},

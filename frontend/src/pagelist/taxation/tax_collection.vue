@@ -2,18 +2,21 @@
   <div id="">
 
     <h1 class="subtitle">વેરાની વસુલાત</h1>
+    <b-loading :is-full-page="true" :active.sync="loading" :can-cancel="true"></b-loading>
+
     <div class="columns is-radiusless box">
       <div class="column is-4">
         <p class="content">માલિક્ની વિગતો</p>
         <div>
           <b-field label="મિલકત નમ્બર">
-            <b-input required/>
+            <b-input v-model="ownerNumber" @input="ownerNumberChange" required/>
           </b-field>
+
           <b-field label="માલિકનુ નામ">
-            <b-input required/>
+            <b-input v-model="owner.ownername" required/>
           </b-field>
           <b-field label='મિલકતનુ સરનામુ'>
-            <b-input/>
+            <b-input v-model="owner.owneraddr"/>
           </b-field>
         </div>
       </div>
@@ -29,6 +32,14 @@
                 <b-table-column label="કુલ ભર્યા"><b-input disabled/></b-table-column>
             </template>
           </b-table>
+
+
+
+
+
+          <div class="box is-radiusless is-clearfix">
+            <button class="button is-primary is-pulled-right">વેરા ભરો</button>
+          </div>
       </div>
     </div>
   </div>
@@ -36,11 +47,32 @@
 <script>
 export default {
   name: "TaxCollection",
-  data: () => ({
-  }),
+  data(){
+    return{
+      ownerNumber:'',
+      owner:{},
+      loading:false
+    }
+  },
   computed:{
     taxList(){
       return this.$store.getters['TaxationStore/taxList']
+    }
+  },
+  methods: {
+
+    ownerNumberChange(value) {
+        this.loading=true;
+        this.$store.dispatch('PropertyStore/fetchPropertyByNumber',value)
+          .then(rr=>{
+            this.owner=rr
+            this.loading=false
+          })
+          .catch(error=>{
+              this.owner={}
+              console.log('****',error);
+              this.loading=false
+          })
     }
   },
   mounted() {

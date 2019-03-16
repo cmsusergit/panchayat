@@ -54,5 +54,17 @@
   "Akarniyear": {
     "dataSource": "panchayat",
     "public": true
+  },
+  "property": {
+    "dataSource": "panchayat",
+    "public": true
+  },
+  "Taxcollection": {
+    "dataSource": "panchayat",
+    "public": true
+  },
+  "Taxchallan": {
+    "dataSource": "panchayat",
+    "public": true
   }
 }

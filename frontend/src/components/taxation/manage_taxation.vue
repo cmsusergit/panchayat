@@ -15,10 +15,9 @@
 
     <div class="block">
     <b-radio @input='changeRadio' v-model="radio" native-value="રક્મમા">રક્મમા</b-radio>
-    <b-radio @input='changeRadio' v-model="radio" native-value="ટકવારી">ટકવારી</b-radio>
+    <b-radio @input='changeRadio' v-model="radio" native-value="ટકાવારી">ટકાવારી (1000%)</b-radio>
   </div>
   <div class="is-pulled-right">
-
     <button v-if="taxOb.taxid==0" @click="addTaxDetail" class="button is-primary">ઉમેરો</button>
     <button v-else @click="updateTaxDetail" class="button is-primary">સુધારો</button>
     <button @click="newTaxDetail" class="button is-success">નવો વેરો</button>
@@ -42,17 +41,15 @@ export default {
     },
     newTaxDetail(){
       this.taxOb=new TaxDetail();
-      this.radio= (this.taxOb.taxvaluetype==0)?'રક્મમા':'ટકવારી'
+      this.radio= (this.taxOb.taxvaluetype==0)?'રક્મમા':'ટકાવારી'
     },
 
     addTaxDetail(){
 
-      this.taxOb.akarniyear =this.$store.state.akarniyear
       this.$store.dispatch('TaxationStore/addTaxDetail',this.taxOb)
       this.taxOb=new TaxDetail();
     },
     updateTaxDetail(){
-      this.taxOb.akarniyear =this.$store.state.akarniyear
         this.$store.dispatch('TaxationStore/updateTaxDetail',this.taxOb)
         this.taxOb=new TaxDetail();
     }

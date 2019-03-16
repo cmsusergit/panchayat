@@ -4,15 +4,16 @@ export default class PropertyDetail{
       this.propertyCode=0;
       this.ownername="";
       this.owneraddr="";
-      this.mobile="";
-      this.phone="";
-      this.email="";
+      this.ownermobile="";
+      this.ownerphone="";
+      this.owneremail="";
       this.propertyNumber="";
       this.lesserName="";
       this.propertyDesc="";
 
       this.propertyAddr="";
-      this.annualAssesmentValue=0.0;
-      this.comment="";
+      this.citySurveyNumber="";
+      this.annualAssessmentValue=0.0;
+      this.comment="-";
   }
 }

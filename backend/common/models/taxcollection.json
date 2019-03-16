@@ -1,0 +1,37 @@
+{
+  "name": "Taxcollection",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "tcid": {
+      "type": "number",
+      "id":true,
+      "required": true
+    },
+    "f_propnumber": {
+      "type": "string",
+      "required": true
+    },
+    "f_taxid": {
+      "type": "number",
+      "required": true
+    },
+    "pendingtax": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    },
+    "currenttax": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

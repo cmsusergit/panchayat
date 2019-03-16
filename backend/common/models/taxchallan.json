@@ -1,0 +1,41 @@
+{
+  "name": "Taxchallan",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "tchallanid": {
+      "type": "number",
+      "id":true,
+      "required": true
+    },
+    "f_tcid": {
+      "type": "number",
+      "required": true
+    },
+    "f_ayear": {
+      "type": "string",
+      "required": true
+    },
+    "paymentDate": {
+      "type": "date",
+      "required": true
+    },
+    "pendingpaid": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    },
+    "currentpaid": {
+      "type": "number",
+      "required": true,
+      "default": 0
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

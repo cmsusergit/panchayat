@@ -1,0 +1,90 @@
+{
+  "name": "property",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "propertyCode": {
+      "type": "number",
+      "id": true,
+      "required": true
+    },
+    "ownername": {
+      "type": "string",
+      "required": true
+    },
+    "owneraddr": {
+      "type": "string",
+      "required": true
+    },
+    "ownermobile": {
+      "type": "number"
+    },
+    "ownerphone": {
+      "type": "number"
+    },
+    "owneremail": {
+      "type": "string"
+    },
+    "propertyNumber": {
+      "type": "string",
+      "required": true
+    },
+    "lesserName": {
+      "type": "string",
+      "required": true
+    },
+    "propertyDesc": {
+      "type": "string"
+    },
+    "propertyAddr": {
+      "type": "string",
+      "required": true
+    },
+    "annualAssessmentValue": {
+      "type": "number",
+      "required": true
+    },
+    "fAyear": {
+      "type": "String",
+      "required": true,
+      "length": 10,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "f_ayear",
+        "dataType": "varchar",
+        "dataLength": 10,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "N"
+      },
+      "_selectable": false
+    },
+    "citySurveyNumber": {
+      "type": "String",
+      "required": true,
+      "length": 10,
+      "precision": null,
+      "scale": null,
+      "mysql": {
+        "columnName": "citysurveynumber",
+        "dataType": "varchar",
+        "dataLength": 10,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "N"
+      },
+      "_selectable": false
+    },
+    "comment": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

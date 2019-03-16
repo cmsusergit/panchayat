@@ -71,6 +71,7 @@ export default {
         },
         ayearChanged(){
           this.$store.dispatch('changeCurrentAyear',this.currentAyear);
+          localStorage.setItem("currentAyear",this.currentAyear);
         }
     }}
 </script>
