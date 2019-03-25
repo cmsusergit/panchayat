@@ -42,22 +42,31 @@ const AyearStore={
                   curryear:detail1.akarniyear
                 }
               }
-              apiObject.post('/properties/copyPropertyToAyear',dt)
+              apiObject.post('/properties/copyPropertyToAyear',dt )
                 .then(rr=>{
-                  apiObject.post('/TaxDetails/copyTaxDetailToAyear',dt )
-                    .then(rr=>{
-                      dispatch('fetchAyearList');
-                      resolve(response)
-                    })
-                    .catch(error=>{
-                      console.log('****');
-                        reject(error)
-                    })
+                  dispatch('fetchAyearList');
+                  resolve(response)
                 })
                 .catch(error=>{
                   console.log('****');
                     reject(error)
-                })
+              })
+              // apiObject.post('/TaxDetails/copyTaxDetailToAyear',dt)
+              //   .then(rr=>{
+              //     apiObject.post('/properties/copyPropertyToAyear',dt )
+              //       .then(rr=>{
+              //         dispatch('fetchAyearList');
+              //         resolve(response)
+              //       })
+              //       .catch(error=>{
+              //         console.log('****');
+              //           reject(error)
+              //       })
+              //   })
+              //   .catch(error=>{
+              //     console.log('****');
+              //       reject(error)
+              //   })
             }
       })
       .catch(error=>{

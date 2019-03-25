@@ -24,7 +24,7 @@
       <div class="is-pulled-right">
       <button v-if="ayearOb.akarniyearid==0" @click="addAyearDetail" class="button is-primary">ઉમેરો</button>
       <button v-else @click="updateAyearDetail" class="button is-primary">સુધારો</button>
-      <button @click="newAyearDetail" class="button is-success">નવો વેરો</button>
+      <button @click="newAyearDetail" class="button is-success">નવું વર્ષ</button>
       </div>
     </div>
   </div>
