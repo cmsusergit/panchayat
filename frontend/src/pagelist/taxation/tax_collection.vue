@@ -21,31 +21,39 @@
       </div>
       <div v-if="owner.ownername" class="column" style="border-left:1px solid grey">
           <p class="content">વેરાની વિગતો</p>
-          <b-table :data='taxCollectionList' bordered>
-            <template slot-scope="props">
-                <b-table-column width='100' field="taxname" label="વેરાનુ નામ">
-                  {{getTaxNameById(props.row.f_taxid)}}
-                </b-table-column>
-                <b-table-column label="પાછલા બાકી" width=110>
-                  <b-input v-model="props.row.pendingtax" type='number' disabled/>
-                </b-table-column>
-                <b-table-column label="પાછલા ભર્યા" width=110>
-                  <b-input v-model="props.row.pendingtaxpaid" min='0' :max='props.row.pendingtax'  type='number'/>
-                </b-table-column>
-                <b-table-column label="ચાલુ બાકી" width=110>
-                  <b-input v-model="props.row.currenttax" disabled/>
-                </b-table-column>
+          <table class="table is-fullwidth">
+            <thead>
+              <th width="100">વેરાનુ નામ</th>
+              <th width="80">પાછલા બાકી</th>
+              <th width="80">પાછલા ભર્યા</th>
+              <th width="80">ચાલુ બાકી</th>
+              <th width="80">ચાલુ ભર્યા</th>
+              <th width="80">કુલ ભર્યા</th>
+            </thead>
+            <tr v-for="(ob,indx) in taxCollectionList" :key="indx">
+              <td>{{getTaxNameById(ob.f_taxid)}}</td>
+              <td>{{ob.pendingtax}}</td>
+              <td>
 
-                <b-table-column label="ચાલુ ભર્યા" width=110>
-                  <b-input v-model="props.row.currenttaxpaid" min='0' :max='props.row.currenttax' type='number'/>
-                </b-table-column>
-                <b-table-column label="કુલ ભર્યા" width=110>
-                  <b-input :value="calculateTotal(props.row.pendingtaxpaid,props.row.currenttaxpaid)" disabled/>
-                </b-table-column>
-            </template>
-          </b-table>
-          <div style="margin-top:1em;" class="box is-radiusless is-clearfix">
-            <button @click="payTax" class="button is-primary is-pulled-right">વેરા ભરો</button>
+
+
+                <b-input v-model="ob.pendingtaxpaid" type="number" min='0' :max='ob.pendingtax'/>
+              </td>
+              <td>{{ob.currenttax}}</td>
+              <td>
+                <b-input v-model="ob.currenttaxpaid" type="number" min='0' :max='ob.currenttax'/>
+              </td>
+              <td>{{calculateTotal(ob.pendingtaxpaid,ob.currenttaxpaid)}}</td>
+            </tr>
+          </table>
+
+        <div style="margin-top:1em;" class="box is-radiusless">
+            <b-field label="કુલ વેરા ભરવાની રકમ">
+              <b-input @input="totalTaxtoPay" style="margin-left:1em;" type="number" expanded/>
+              <button @click="payTax" style="margin-left:1em;" class="button is-primary level-right">વેરા ભરો</button>
+
+              <button @click="generateReport" style="margin-left:1em;" class="button is-primary level-right">રિપોર્ટ</button>
+            </b-field>
           </div>
       </div>
       <div v-else class="column is-size-4" style="border-left:1px solid grey">
@@ -55,14 +63,26 @@
         <p v-else>મિલકત નંબર {{ownerNumber}} વાળો રેકોર્ડ ઉપલબ્ધ નથી</p>
       </div>
     </div>
+
+
+
+
+    <b-modal :active.sync='reportPanelOpen' :width="1024" :has-modal-card="true" style="overflow:auto;">
+      <TaxPaidReport :propertyNumber="ownerNumber" :ownerName="owner.ownername" :taxCollectionList="taxCollectionList" :taxList="taxList"/>
+    </b-modal>
   </div>
 </template>
 <script>
 import {find} from 'lodash'
+import TaxPaidReport from '@/components/report/taxpaidReport'
 export default {
   name: "TaxCollection",
+  components: {
+    TaxPaidReport
+  },
   data(){
     return{
+      reportPanelOpen:false,
       ownerNumber:'',
       owner:{},
       loading:false
@@ -77,7 +97,9 @@ export default {
     }
   },
   methods: {
-
+    totalTaxtoPay(value){
+    },
+    generateReport(){this.reportPanelOpen=true;},
     calculateTotal(v1,v2){
       if(v1 && v2)
         return parseInt(v1)+parseInt(v2)
